@@ -51,12 +51,9 @@ function renderLicenseBadge(license) {
 		default:
 			return "";
 	}
-	return `${renderLicenseSection(
-		`![License](https://img.shields.io/badge/License-${badge}.svg)`
-	)}`;
-	// [![License](https://img.shields.io/badge/License-${badge}.svg)](https://choosealicense.com/licenses/${renderLicenseLink(
-	// 	license
-	// )}/)`;
+	return `[![License](https://img.shields.io/badge/License-${badge}.svg)](https://choosealicense.com/licenses/${renderLicenseLink(
+		license
+	)}/)`;
 }
 
 // TODO: Create a function that returns the license link
