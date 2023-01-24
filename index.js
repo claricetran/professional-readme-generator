@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown.js");
+const genMD = require("./utils/generateMarkdown.js");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -13,14 +13,12 @@ const questions = [
 	{
 		type: "input",
 		name: "description",
-		message:
-			"Provide a short description explaining the what (What was your motivation?/What problem did you solve?/What did you learn?), why (Why did you build this project?), and how of your project.",
+		message: "Provide a short description explaining the what, why, and how of your project.",
 	},
 	{
 		type: "input",
 		name: "install",
-		message:
-			"What are the installation steps for this project? (If multiple steps, please format as like so: 1. Step one.\\n2. Step two.)",
+		message: "What are the installation steps for this project?",
 	},
 	{
 		type: "input",
@@ -31,7 +29,7 @@ const questions = [
 		type: "confirm",
 		name: "usageImageCheck",
 		message:
-			"Did you want to use an image in your usage section? (Note that you may only insert one through this method)",
+			"Did you want to use an image in your usage section? (Note: You may only insert one through this method)",
 	},
 	{
 		type: "input",
@@ -44,7 +42,7 @@ const questions = [
 	{
 		type: "list",
 		name: "license",
-		message: "What type of license would you like to include?",
+		message: "Which license would you like to include?",
 		choices: [
 			"None",
 			"Apache",
@@ -88,7 +86,9 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-	fs.writeFile(`./output/${fileName}`, data);
+	fs.writeFile(`./output/${fileName}-README.md`, data, (err) =>
+		err ? console.log(err) : console.log("README.md successfully written.")
+	);
 }
 
 // TODO: Create a function to initialize app
@@ -96,7 +96,8 @@ function init() {
 	inquirer
 		.prompt(questions)
 		.then((answers) => {
-			writeToFile(`${answers.title}_README.md`, generateMarkdown(answers));
+			const data = genMD.generateMarkdown(answers);
+			writeToFile(answers.title, data);
 		})
 		.then(() => console.log("README.md has been generated"))
 		.catch((err) => console.error(err));
@@ -104,3 +105,20 @@ function init() {
 
 // Function call to initialize app
 init();
+
+// let answers = {
+// 	title: "Test",
+// 	license: "ISC",
+// 	description: "Teest",
+// 	install: "test",
+// 	usage: "test",
+// 	usageImageCheck: true,
+// 	usageImage: "testpath.png",
+// 	contributing: "test",
+// 	github: "test",
+// 	email: "test@mail.com",
+// };
+
+// console.log(genMD.test(true));
+// console.log(genMD.test(false));
+// console.log(genMD.generateMarkdown(answers));

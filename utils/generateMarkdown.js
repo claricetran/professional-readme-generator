@@ -1,7 +1,7 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-	const badge = "";
+	let badge = "";
 	switch (license) {
 		case "Apache":
 			badge = "Apache_2.0-blue";
@@ -51,15 +51,18 @@ function renderLicenseBadge(license) {
 		default:
 			return "";
 	}
-	return `[![License](https://img.shields.io/badge/License-${badge}.svg](https://choosealicense.com/licenses/${renderLicenseLink(
-		license
-	)}/)`;
+	return `${renderLicenseSection(
+		`![License](https://img.shields.io/badge/License-${badge}.svg)`
+	)}`;
+	// [![License](https://img.shields.io/badge/License-${badge}.svg)](https://choosealicense.com/licenses/${renderLicenseLink(
+	// 	license
+	// )}/)`;
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-	const link = "";
+	let link = "";
 	switch (license) {
 		case "Apache":
 			link = "apache-2.0";
@@ -123,9 +126,9 @@ function renderLicenseSection(license) {
 	}
 }
 
-function renderUsageImage(imagePath) {
-	if (imagePath != null) {
-		return `[usage image](${imagePath})`;
+function renderUsageImage(check, imagePath) {
+	if (check) {
+		return `![usage image](${imagePath})`;
 	} else {
 		return "";
 	}
@@ -158,7 +161,7 @@ ${data.install}
 
 ${data.usage}
 
-${renderUsageImage(data.usageImage)}
+${renderUsageImage(data.usageImageCheck, data.usageImage)}
 
 ## License
 
@@ -170,11 +173,13 @@ ${data.contributing}
 
 ## Tests
 
+${data.tests}
+
 ## Questions
-[Checkout my GitHub.](https://github.com/${data.github})
-Alternatively, you can email me at [${data.email}](mailto: ${data.email})
+If you have any questions, checkout my [GitHub](https://github.com/${data.github}). <br/>
+Alternatively, you can email me at <${data.email}>
 
 `;
 }
 
-module.exports = generateMarkdown;
+module.exports = { generateMarkdown };
