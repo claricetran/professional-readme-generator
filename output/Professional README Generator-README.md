@@ -8,12 +8,12 @@ This professional README generator was made with Node.js. It is a command-line a
 
 ## Table of Contents
 
--   [Installation](#installation)
--   [Usage](#usage)
--   [License](#license)
--   [Contributing](#contributing)
--   [Tests](#tests)
--   [Questions](#questions)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
 ## Installation
 
@@ -38,6 +38,6 @@ Feel free to clone this repo for your own use.
 No test cases.
 
 ## Questions
-
 If you have any questions, checkout my [GitHub](https://github.com/claricetran). <br/>
 Alternatively, you can email me at <tran.clarice@gmail.com>
+
