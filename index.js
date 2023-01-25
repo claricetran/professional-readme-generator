@@ -105,20 +105,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
-// let answers = {
-// 	title: "Test",
-// 	license: "ISC",
-// 	description: "Teest",
-// 	install: "test",
-// 	usage: "test",
-// 	usageImageCheck: true,
-// 	usageImage: "testpath.png",
-// 	contributing: "test",
-// 	github: "test",
-// 	email: "test@mail.com",
-// };
-
-// console.log(genMD.test(true));
-// console.log(genMD.test(false));
-// console.log(genMD.generateMarkdown(answers));
